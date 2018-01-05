@@ -8,7 +8,7 @@
 	if(isset($_POST['update'])) {
 		
 		//info
-		$id		= addslashes($_POST['id']);
+		$id	= addslashes($_POST['id']);
 		$title	= addslashes($_POST['title']);
 		$artist	= addslashes($_POST['artist']);
 		$album	= addslashes($_POST['album']);
@@ -22,8 +22,8 @@
 
 		if (!$lagu_kosong) {
 			//mengambil data lagu
-			$lagu_type	= $_FILES['lagu']['type'];
-			$data_lagu	= addslashes(file_get_contents($_FILES['lagu']['tmp_name']));
+			$lagu_type = $_FILES['lagu']['type'];
+			$data_lagu = addslashes(file_get_contents($_FILES['lagu']['tmp_name']));
 
 			//cek tipe data lagu
 			if((strstr($lagu_type, "audio/")) == FALSE){
@@ -48,8 +48,8 @@
 
 		if (!$cover_kosong) {
 			//mengambil data cover / album art
-			$cover_type	= $_FILES['cover']['type'];
-			$data_cover	= addslashes(file_get_contents($_FILES['cover']['tmp_name']));
+			$cover_type = $_FILES['cover']['type'];
+			$data_cover = addslashes(file_get_contents($_FILES['cover']['tmp_name']));
 
 			//cek tipe data cover
 			if((strstr($cover_type, "image/")) == FALSE){
