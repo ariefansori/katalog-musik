@@ -1,0 +1,197 @@
+.audio-player {
+	position: relative;
+	width: 100%;
+	height: 0;
+	text-align: center;
+	padding-bottom: 100%;
+	background-color: #7d6eba;
+	border-radius: 50%;
+}
+
+
+.audio-player:hover img {
+	filter: blur(2px);
+	transition: filter .5s ease-in-out;
+}
+
+.audio-player:focus .audio-player__cover,
+.audio-player:hover .audio-player__cover,
+.audio-player.is-playing .audio-player__cover {
+	opacity: 0.5;
+}
+.audio-player:focus .audio-player__control-icon,
+.audio-player:hover .audio-player__control-icon,
+.audio-player.is-playing .audio-player__control-icon {
+	-webkit-transform: scale(1.15);
+					transform: scale(1.15);
+}
+.audio-player.is-playing .audio-player__cover {
+	opacity: 0.75;
+	-webkit-animation-name: spin;
+	-webkit-animation-duration: 10000ms;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+
+	-moz-animation-name: spin;
+	-moz-animation-duration: 10000ms;
+	-moz-animation-iteration-count: infinite;
+	-moz-animation-timing-function: linear;
+
+	-ms-animation-name: spin;
+	-ms-animation-duration: 10000ms;
+	-ms-animation-iteration-count: infinite;
+	-ms-animation-timing-function: linear;
+
+	animation-name: spin;
+	animation-duration: 10000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.audio-player.is-playing::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	content: '';
+	background-color: #7d6eba;
+	z-index: -1;
+	pointer-events: none;
+	opacity: 0;
+	animation: sonarWave 2s linear infinite;
+}
+
+.audio-player.is-playing .audio-player__control-icon:before {
+	-webkit-transform: translateY(0);
+					transform: translateY(0);
+}
+.audio-player.is-playing .audio-player__control-icon:after {
+	-webkit-transform: translateY(50px);
+					transform: translateY(50px);
+}
+.audio-player__cover {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	-webkit-transition: opacity 350ms;
+	transition: opacity 350ms;
+	will-change: opacity;
+}
+
+.audio-player__control {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 20;
+	border: none;
+	background: none;
+	margin: auto;
+	cursor: pointer;
+	opacity: 0;
+}
+
+.audio-player__control:hover {
+	opacity: 1;
+}
+
+.audio-player__control:focus {
+	outline: none;
+}
+
+.audio-player.is-playing .audio-player__control {
+	opacity: 1;
+}
+.audio-player__control-icon {
+	position: absolute;
+	width: 65px;
+	height: 65px;
+	border-radius: 50%;
+	border: 3px solid #fff;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	overflow: hidden;
+	-webkit-transition: all 250ms ease-out;
+	transition: all 250ms ease-out;
+	-webkit-transform: scale(1);
+					transform: scale(1);
+	will-change: transform;
+}
+.audio-player__control-icon::after,
+.audio-player__control-icon::before {
+	-webkit-transition: all 200ms;
+	transition: all 200ms;
+	will-change: transform;
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+}
+.audio-player__control-icon::after {
+	left: 5px;
+	width: 0;
+	height: 0;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+	border-left: 20px solid #fff;
+	-webkit-transform: translateY(0);
+					transform: translateY(0);
+}
+.audio-player__control-icon::before {
+	width: 15px;
+	height: 30px;
+	border-right: 6px solid #fff;
+	border-left: 6px solid #fff;
+	-webkit-transform: translateY(-50px);
+					transform: translateY(-50px);
+}
+.audio-players {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+@-ms-keyframes spin {
+		from { -ms-transform: rotate(0deg); }
+		to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+		from { -moz-transform: rotate(0deg); }
+		to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+		from { -webkit-transform: rotate(0deg); }
+		to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+		from {
+				transform:rotate(0deg);
+		}
+		to {
+				transform:rotate(360deg);
+		}
+}
+
+@keyframes sonarWave {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
